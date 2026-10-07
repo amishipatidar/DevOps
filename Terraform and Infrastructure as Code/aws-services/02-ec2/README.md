@@ -10,4 +10,4 @@ Comprehensive guide on AWS EC2 virtual compute instances, AMI images, networking
 - **Security Groups**: Stateful virtual firewalls controlling inbound and outbound network traffic at instance level.
 - **EBS (Elastic Block Store)**: Persistent block storage volumes attached to EC2 instances (`gp3`, `io2`).
 - **Public vs Private IP**: Public IP (internet-routable) vs Private IP (internal VPC communications).
-- **Instance Lifecycle**: Pending ➔ Running ➔ Stopping ➔ Stopped ➔ Terminated.
+- **Instance Lifecycle**: Pending  Running  Stopping  Stopped  Terminated.

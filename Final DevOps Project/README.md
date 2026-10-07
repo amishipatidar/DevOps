@@ -1,10 +1,10 @@
 # Session 21: Final DevOps Project & Capstone Engineering
 
-Complete end-to-end Capstone project combining all course concepts: **Application Development ➔ Git/GitHub ➔ Automated CI/CD Pipelines ➔ DevSecOps Security Gates ➔ Multi-Stage Docker Packaging ➔ Terraform Cloud Provisioning ➔ Kubernetes & Helm Deployments ➔ Prometheus Monitoring ➔ ArgoCD GitOps ➔ Troubleshooting Challenge**.
+Complete end-to-end Capstone project combining all course concepts: **Application Development  Git/GitHub  Automated CI/CD Pipelines  DevSecOps Security Gates  Multi-Stage Docker Packaging  Terraform Cloud Provisioning  Kubernetes & Helm Deployments  Prometheus Monitoring  ArgoCD GitOps  Troubleshooting Challenge**.
 
 ---
 
-## 👤 Student Information
+## Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,37 +13,37 @@ Complete end-to-end Capstone project combining all course concepts: **Applicatio
 
 ---
 
-## 🏗️ End-to-End System Architecture
+## End-to-End System Architecture
 
 ```text
 [ Application Code (Node.js/Express) ]
-               │
+               
       [ Git & GitHub Push ]
-               │
+               
       [ GitHub Actions CI/CD Pipeline ]
-               │
-    ┌──────────┴──────────┐
-    ▼                     ▼
+               
+    
+                         
 [ DevSecOps Scan ]   [ Docker Multi-Stage Build ]
  (SAST/SCA/Trivy)    (Optimized 20-alpine container)
-    │                     │
-    └──────────┬──────────┘
-               ▼
+                         
+    
+               
 [ Image Registry (Docker Hub) ]
-               │
+               
 [ Terraform Provisioning (AWS VPC) ]
-               │
+               
 [ Kubernetes Deployment via Helm Chart ]
-               │
-    ┌──────────┴──────────┐
-    ▼                     ▼
+               
+    
+                         
 [ ArgoCD GitOps Sync ]  [ Prometheus & Grafana Monitoring ]
  (Continuous Reconciliation)  (Metrics, CPU/Memory Alerts)
 ```
 
 ---
 
-## 🛠️ Capstone Technologies Matrix
+## Capstone Technologies Matrix
 
 | Stage | Technology | Function |
 |---|---|---|
@@ -59,7 +59,7 @@ Complete end-to-end Capstone project combining all course concepts: **Applicatio
 
 ---
 
-## 🔍 Final Troubleshooting Challenge
+## Final Troubleshooting Challenge
 
 - **Problem Identified:** Intentionally introduced `ImagePullBackOff` and container readiness probe timeout in broken manifest [`troubleshooting/broken-scenario.yaml`](./troubleshooting/broken-scenario.yaml).
 - **Investigation:** Executed `kubectl describe pod` and `kubectl logs --previous` to identify invalid image tag.
@@ -68,7 +68,7 @@ Complete end-to-end Capstone project combining all course concepts: **Applicatio
 
 ---
 
-## 🎯 Key Lessons Learned
+## Key Lessons Learned
 
 1. **Automation First:** End-to-end automation reduces human error in deployments.
 2. **Shift-Left Security:** Integrating SAST, SCA, and container scanning prevents vulnerable code from reaching production.

@@ -4,7 +4,7 @@ Complete guide and hands-on lab report for **Kubernetes Troubleshooting**, cover
 
 ---
 
-## 👤 Student Metadata
+## Student Metadata
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Complete guide and hands-on lab report for **Kubernetes Troubleshooting**, cover
 
 ---
 
-## 🛠️ Task 1: Essential Kubernetes Troubleshooting Commands
+## Task 1: Essential Kubernetes Troubleshooting Commands
 
 | Command | Syntax / Usage | Primary Troubleshooting Purpose |
 |---|---|---|
@@ -28,7 +28,7 @@ Complete guide and hands-on lab report for **Kubernetes Troubleshooting**, cover
 
 ---
 
-## 🔍 Task 2: Troubleshooting Common Kubernetes Issues
+## Task 2: Troubleshooting Common Kubernetes Issues
 
 ### Issue 1: `CrashLoopBackOff`
 - **Problem Statement:** Pod status repeatedly cycles between running briefly, exiting with an error code, and restarting.
@@ -164,7 +164,7 @@ Complete guide and hands-on lab report for **Kubernetes Troubleshooting**, cover
 
 ---
 
-## 🚀 Task 3: Kubernetes Troubleshooting Mini Project
+## Task 3: Kubernetes Troubleshooting Mini Project
 
 ### Scenario Overview
 A 2-tier Order Processing Application consisting of:
@@ -271,7 +271,7 @@ service/order-frontend-service NodePort   10.102.190.11   80:30080/TCP   45s   a
 
 ---
 
-### 📸 Screenshots Guide
+### Screenshots Guide
 
 All terminal logs and verification screenshots are saved in [`./screenshots/`](./screenshots/):
 - `task1-kubectl-commands.png`: Demonstration of `kubectl get`, `describe`, `logs`, `exec`, `top`.

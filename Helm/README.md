@@ -4,7 +4,7 @@ Complete lab documentation and mini-project implementation for **Session 15: Hel
 
 ---
 
-## 👤 Student Information
+## Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Complete lab documentation and mini-project implementation for **Session 15: Hel
 
 ---
 
-## 📌 Task 1: Helm Commands Reference & Practice
+## Task 1: Helm Commands Reference & Practice
 
 | Command | Command Syntax | Description & Execution Purpose |
 |---|---|---|
@@ -31,7 +31,7 @@ Complete lab documentation and mini-project implementation for **Session 15: Hel
 
 ---
 
-## 🔄 Task 2: Helm Rollback Workflow
+## Task 2: Helm Rollback Workflow
 
 ### Step-by-Step Execution Log
 
@@ -56,7 +56,7 @@ Complete lab documentation and mini-project implementation for **Session 15: Hel
 4. **Step 4: Inspect History & Trigger Rollback**
    ```bash
    helm history demo-release
-   # Rollback from broken Revision 3 to stable Revision 2:
+   #Rollback from broken Revision 3 to stable Revision 2:
    helm rollback demo-release 2
    ```
 
@@ -69,7 +69,7 @@ Complete lab documentation and mini-project implementation for **Session 15: Hel
 
 ---
 
-## 🏗️ Task 3: Enterprise Helm Mini Project
+## Task 3: Enterprise Helm Mini Project
 
 ### Architecture & Chart Structure
 

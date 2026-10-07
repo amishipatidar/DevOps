@@ -4,7 +4,7 @@ Complete project documentation for **Session 16: Continuous Integration & Contin
 
 ---
 
-## 👤 Student Metadata
+## Student Metadata
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Complete project documentation for **Session 16: Continuous Integration & Contin
 
 ---
 
-## 📘 CI vs CD Core Concepts
+## CI vs CD Core Concepts
 
 | Parameter | Continuous Integration (CI) | Continuous Deployment (CD) |
 |---|---|---|
@@ -23,7 +23,7 @@ Complete project documentation for **Session 16: Continuous Integration & Contin
 
 ---
 
-## ⚙️ GitHub Actions Workflow Components
+## GitHub Actions Workflow Components
 
 - **Workflow File:** [`.github/workflows/cicd.yml`](./.github/workflows/cicd.yml)
 - **Runners:** Hosted `ubuntu-latest` virtual machines providing isolated execution environments.
@@ -34,7 +34,7 @@ Complete project documentation for **Session 16: Continuous Integration & Contin
 
 ---
 
-## 🚀 Execution & Verification
+## Execution & Verification
 
 ### Local Test Commands
 ```bash
@@ -54,8 +54,8 @@ curl http://localhost:3000/
 
 ### GitHub Actions Execution Output
 Once pushed to GitHub, navigate to **Actions** tab on your repository to view pipeline execution logs:
-- Job `Continuous Integration (CI)` ➔ `100% Passed`
-- Job `Continuous Deployment (CD)` ➔ `100% Deployed`
+- Job `Continuous Integration (CI)`  `100% Passed`
+- Job `Continuous Deployment (CD)`  `100% Deployed`
 
 ---
 

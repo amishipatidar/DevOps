@@ -4,7 +4,7 @@ Complete project documentation and lab implementation for **Session 20: Monitori
 
 ---
 
-## 👤 Student Information
+## Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Complete project documentation and lab implementation for **Session 20: Monitori
 
 ---
 
-## 📌 Deliverables Overview
+## Deliverables Overview
 
 1. **Task 1: Monitoring Demo** ([`monitoring-demo/`](./monitoring-demo/))
    - Express app with Prometheus metrics (`prom-client`).

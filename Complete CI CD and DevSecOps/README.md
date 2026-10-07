@@ -4,7 +4,7 @@ End-to-end implementation for **Session 17: DevSecOps Infrastructure**, embeddin
 
 ---
 
-## 👤 Student Information
+## Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,31 +13,31 @@ End-to-end implementation for **Session 17: DevSecOps Infrastructure**, embeddin
 
 ---
 
-## 🔄 End-to-End Expected Flow Architecture
+## End-to-End Expected Flow Architecture
 
 ```text
   [ Code Push ]
-        │
+        
   [ 1. Build & Unit Tests ]
-        │
+        
   [ 2. SAST (Static Code Analysis - Semgrep) ]
-        │
+        
   [ 3. SCA (Dependency Analysis - npm audit) ]
-        │
+        
   [ 4. Secret Scan (Gitleaks) ]
-        │
+        
   [ 5. Docker Multi-Stage Build ]
-        │
+        
   [ 6. Container Image Scan (Trivy) ]
-        │
+        
   [ 7. Security Gate Enforcement (Policy Check) ]
-        │
+        
   [ 8. Kubernetes Deployment (Manifest Apply) ]
 ```
 
 ---
 
-## 🛡️ DevSecOps Security Tools Matrix
+## DevSecOps Security Tools Matrix
 
 | Security Phase | Tool Used | Inspection Scope | Policy / Target |
 |---|---|---|---|
@@ -49,7 +49,7 @@ End-to-end implementation for **Session 17: DevSecOps Infrastructure**, embeddin
 
 ---
 
-## 🚀 Execution & Verification Guide
+## Execution & Verification Guide
 
 ### Local Security Scan Commands
 ```bash

@@ -8,28 +8,28 @@ everything below is from a real run on the Minikube cluster.
 |---|---|
 | **ConfigMap** | Non-sensitive settings as key-value pairs, stored outside the image |
 | **Secret** | Sensitive values (passwords, tokens, TLS keys), base64-encoded |
-| **Ingress** | HTTP routing rules — host and path — in front of many Services |
+| **Ingress** | HTTP routing rules  host and path  in front of many Services |
 | **Ingress Controller** | The reverse proxy (NGINX here) that actually reads Ingress objects and serves traffic |
 
 What gets built:
 
 ```text
                          Host: campus.local
-  curl / browser ──────────► NGINX Ingress Controller
-                                     │
-                    path /           │           path /api/...
-                    ▼                                ▼
+  curl / browser  NGINX Ingress Controller
+                                     
+                    path /                      path /api/...
+                                                    
        campus-frontend-service            campus-backend-service    (both ClusterIP)
-                    ▼                                ▼
-          2 × Nginx Pods                    2 × Python API Pods
-                                             ▲                ▲
+                                                    
+          2  Nginx Pods                    2  Python API Pods
+                                                             
                                         ConfigMap           Secret
                                     campus-app-config   campus-db-secret
 ```
 
 ## 0. The Ingress controller
 
-An Ingress object on its own does nothing at all — it is only data until a controller reads
+An Ingress object on its own does nothing at all  it is only data until a controller reads
 it. On Minikube the NGINX controller comes as an addon:
 
 ```bash
@@ -58,7 +58,7 @@ kubectl get configmap cli-demo-config -o jsonpath='{.data}'
 
 ![ingress controller and ConfigMap](screenshots/configmap.png)
 
-A ConfigMap is plain text — `describe` prints every value in full, which is precisely the
+A ConfigMap is plain text  `describe` prints every value in full, which is precisely the
 difference from a Secret in the next section. The point of it is that the *same image* runs in
 dev and in production with different ConfigMaps attached, so a config change never requires a
 rebuild.
@@ -110,11 +110,11 @@ The backend deliberately uses both injection styles so the difference is visible
 ```yaml
 envFrom:
   - configMapRef:
-      name: campus-app-config      # every key becomes an env var
+      name: campus-app-config      #every key becomes an env var
 env:
   - name: POSTGRES_USER
     valueFrom:
-      secretKeyRef:                # one named key, chosen explicitly
+      secretKeyRef:                #one named key, chosen explicitly
         name: campus-db-secret
         key: POSTGRES_USER
 ```
@@ -131,7 +131,7 @@ kubectl exec deploy/campus-backend -- env | grep -E 'ENVIRONMENT|POSTGRES_USER' 
 
 Inside the container both sources have collapsed into ordinary environment variables, and the
 Secret values arrive **already decoded** (`POSTGRES_USER=campus_admin`). The application code
-needs to know nothing about Kubernetes — it just reads its environment.
+needs to know nothing about Kubernetes  it just reads its environment.
 
 One caveat worth remembering: environment variables are read once at process start, so editing
 a ConfigMap does **not** update running Pods. They need `kubectl rollout restart
@@ -141,10 +141,10 @@ the reason to prefer volumes for anything that changes often.
 ## 4. Ingress
 
 [`manifests/ingress.yaml`](manifests/ingress.yaml): host `campus.local`, with
-`/api(/|$)(.*)` → backend (rewritten by `rewrite-target: /$2`) and `/` → frontend.
+`/api(/|$)(.*)`  backend (rewritten by `rewrite-target: /$2`) and `/`  frontend.
 
 Rather than editing `/etc/hosts`, the controller was reached through a port-forward and the
-hostname supplied as a header — routing is decided by the `Host` header either way, so the
+hostname supplied as a header  routing is decided by the `Host` header either way, so the
 result is identical:
 
 ```bash
@@ -163,17 +163,17 @@ curl -s -o /dev/null -w 'HTTP %{http_code}\n' -H 'Host: nowhere.local' http://lo
 
 - **One entry point, two Services.** `/` returned the frontend HTML and `/api/` returned the
   backend's plain-text response, both on the same port. Neither Service is exposed outside the
-  cluster — they are both plain ClusterIP.
+  cluster  they are both plain ClusterIP.
 - `describe ingress` resolves each rule down to actual Pod endpoints
   (`10.244.0.31:5000,10.244.0.32:5000`), which makes it the fastest way to tell "the Ingress
   is wrong" apart from "the Service has no Pods".
 - The backend response carries `ENVIRONMENT: production` and `DEFAULT_CAMPUS: Bhopal` from the
   **ConfigMap** and `POSTGRES_USER: campus_admin` from the **Secret**. That single body proves
-  the entire chain end to end: Ingress → Service → Pod → injected configuration.
+  the entire chain end to end: Ingress  Service  Pod  injected configuration.
 - `rewrite-target: /$2` strips the `/api` prefix, so the backend sees `/` and does not need to
   know the public path it is mounted at.
 - `Host: nowhere.local` returned **404** from the controller's default backend. No rule
-  matched, so routing really is host-based — one controller can serve many unrelated
+  matched, so routing really is host-based  one controller can serve many unrelated
   hostnames.
 
 Compared with giving every Service its own LoadBalancer, an Ingress needs one external address
@@ -188,4 +188,4 @@ kubectl delete configmap cli-demo-config
 
 ---
 
-**Amishi Patidar** · Roll No. 24BCS10184
+**Amishi Patidar**  Roll No. 24BCS10184

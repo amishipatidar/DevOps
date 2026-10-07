@@ -34,10 +34,10 @@ docker inspect api --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}} 
 Connectivity checks, run with the tools already inside the images (`wget` and `nc` from BusyBox):
 
 ```bash
-docker exec api wget -qO- http://web  | grep -o "<title>.*</title>"   # works
-docker exec api nc -z -w 3 db 5432 && echo "db:5432 reachable from api"    # works
-docker exec web nc -z -w 3 db 5432                                    # nc: bad address 'db'
-docker exec web wget -qO- http://api  | grep -o "<title>.*</title>"   # works
+docker exec api wget -qO- http://web  | grep -o "<title>.*</title>"   #works
+docker exec api nc -z -w 3 db 5432 && echo "db:5432 reachable from api"    #works
+docker exec web nc -z -w 3 db 5432                                    #nc: bad address 'db'
+docker exec web wget -qO- http://api  | grep -o "<title>.*</title>"   #works
 ```
 
 What this demonstrates:
@@ -69,8 +69,8 @@ server {
 ```bash
 docker run -d --name host-web --network host \
   -v "$(pwd)/host-net/default.conf:/etc/nginx/conf.d/default.conf:ro" nginx:alpine
-docker ps --filter name=host-web        # PORTS column is empty
-docker inspect host-web --format '{{.HostConfig.NetworkMode}}'   # host
+docker ps --filter name=host-web        #PORTS column is empty
+docker inspect host-web --format '{{.HostConfig.NetworkMode}}'   #host
 ```
 
 With `--network host` the container has no network namespace of its own. It uses the host's
@@ -84,7 +84,7 @@ host network I ran a second container on the same network and fetched the page f
 
 ```bash
 docker run --rm --network host alpine wget -qO- http://127.0.0.1:8085 | grep -o "<title>.*</title>"
-# <title>Welcome to nginx!</title>
+#<title>Welcome to nginx!</title>
 ```
 
 On a native Linux host the same page is available at `http://localhost:8085` directly.
@@ -104,13 +104,13 @@ docker run -d --name nginx-live -p 8090:80 \
   -v "$(pwd)/site:/usr/share/nginx/html:ro" nginx:alpine
 
 curl -s http://localhost:8090 | grep "<p>"
-#   <p>Version 1: this file lives on the host and is mounted into the container.</p>
+#<p>Version 1: this file lives on the host and is mounted into the container.</p>
 
 # edit the file on the host while the container keeps running
 sed -i '' 's/Version 1: .*container\./Version 2: edited on the host while the container kept running./' site/index.html
 
 curl -s http://localhost:8090 | grep "<p>"
-#   <p>Version 2: edited on the host while the container kept running.</p>
+#<p>Version 2: edited on the host while the container kept running.</p>
 
 docker inspect nginx-live --format '{{range .Mounts}}{{.Type}} {{.Source}} -> {{.Destination}} ({{.Mode}}){{end}}'
 # bind /.../Docker Networks/site -> /usr/share/nginx/html (ro)

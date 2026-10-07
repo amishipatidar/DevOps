@@ -4,7 +4,7 @@ Comparative study on Managed NoSQL (DynamoDB) vs Relational Database Services (R
 
 ## 1. DynamoDB (NoSQL)
 - **Key Characteristics**: Fully managed key-value & document NoSQL database providing single-digit millisecond performance at any scale.
-- **Data Model**: Tables ➔ Items ➔ Attributes.
+- **Data Model**: Tables  Items  Attributes.
 - **Primary Keys**: Partition Key (HASH) and optional Sort Key (RANGE).
 - **Use Cases**: High-throughput session stores, real-time gaming leaderboards, shopping carts.
 

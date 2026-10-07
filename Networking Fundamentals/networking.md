@@ -131,7 +131,7 @@ Takeaway: useful for spotting *where* latency appears, not just that it exists.
 ```bash
 hostname
 hostname -f
-ipconfig getifaddr en0      # macOS; on Linux use: hostname -I
+ipconfig getifaddr en0      #macOS; on Linux use: hostname -I
 ```
 
 Prints the machine's name, its fully qualified form, and the IPv4 address on the active

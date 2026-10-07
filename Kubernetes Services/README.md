@@ -3,7 +3,7 @@
 A Pod on its own is not addressable in any useful way: its IP changes the moment it is
 rescheduled. A Service is the stable front door. This folder works through all five Service
 types against **one and the same Nginx Pod**, and each one is then tested from the place it
-is actually supposed to be reachable from — another Pod, the node itself, the laptop, or
+is actually supposed to be reachable from  another Pod, the node itself, the laptop, or
 plain DNS.
 
 **Environment:** Minikube v1.39.0 with the Docker driver on macOS (Apple silicon),
@@ -20,7 +20,7 @@ container port 80 is given the name `http`, and the Pod carries the label `app: 
 
 Those two details are what make the rest of the folder work. Every selector-based Service
 below matches on `app: webapp`, and each one writes `targetPort: http` instead of
-`targetPort: 80` — referring to the port by name means the Service keeps working if the
+`targetPort: 80`  referring to the port by name means the Service keeps working if the
 container ever moves to a different port number.
 
 ![webapp-pod.yaml](screenshots/webapp-pod-yaml.png)
@@ -51,7 +51,7 @@ screenshots taken during the run.
 
 The first three are a stack, not three unrelated options:
 
-- **ClusterIP** is the base — a virtual IP plus kube-proxy rules that forward to the matching
+- **ClusterIP** is the base  a virtual IP plus kube-proxy rules that forward to the matching
   Pods.
 - **NodePort** is a ClusterIP *plus* a port reserved on every node.
 - **LoadBalancer** is a NodePort *plus* a request to the cloud provider for an external IP
@@ -61,7 +61,7 @@ This is visible in the output rather than just being a claim: `webapp-loadbalanc
 a ClusterIP (`10.103.254.50`) and still had node port `32747` allocated to it, even though no
 external IP ever showed up.
 
-**Headless** and **ExternalName** are a different kind of thing altogether — neither one gets
+**Headless** and **ExternalName** are a different kind of thing altogether  neither one gets
 a virtual IP, and kube-proxy is not involved. Headless publishes the Pod IPs through DNS and
 lets the client choose; ExternalName is nothing but a CNAME pointing out of the cluster.
 
@@ -72,7 +72,7 @@ All five Services, the EndpointSlices behind them, and the three Pods:
 ![final state](screenshots/final-state.png)
 
 Worth noticing in that output: the four selector-based Services each got their own
-EndpointSlice listing `10.244.0.3:80`, while `webapp-externalname` has none — there is
+EndpointSlice listing `10.244.0.3:80`, while `webapp-externalname` has none  there is
 nothing for it to point at inside the cluster.
 
 ## Cleanup
@@ -87,4 +87,4 @@ kubectl delete -f webapp-pod.yaml
 
 ---
 
-**Amishi Patidar** · Roll No. 24BCS10184
+**Amishi Patidar**  Roll No. 24BCS10184

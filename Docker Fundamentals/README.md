@@ -7,12 +7,12 @@ images were built and run together on one machine; the screenshots are from that
 
 ```
 Docker Fundamentals/
-├── nodejs-app/    Node.js 20, built-in http module, no dependencies
-├── python-app/    Python 3.12 + Flask
-├── java-app/      Java 21, JDK's built-in HttpServer, compiled during the build
-├── Apache-app/    httpd 2.4 serving a static page
-├── React-app/     React 18 + Vite, built in stage 1, served by Nginx in stage 2
-└── nginx-app/     Nginx serving a static page
+ nodejs-app/    Node.js 20, built-in http module, no dependencies
+ python-app/    Python 3.12 + Flask
+ java-app/      Java 21, JDK's built-in HttpServer, compiled during the build
+ Apache-app/    httpd 2.4 serving a static page
+ React-app/     React 18 + Vite, built in stage 1, served by Nginx in stage 2
+ nginx-app/     Nginx serving a static page
 ```
 
 ## Ports

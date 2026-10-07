@@ -2,11 +2,11 @@
 
 A NodePort Service is a ClusterIP Service with one addition: kube-proxy reserves the same
 high-numbered port on **every node in the cluster** and forwards anything arriving there to
-the Service. Reach any node's IP on that port and you reach the app — it does not matter
+the Service. Reach any node's IP on that port and you reach the app  it does not matter
 whether the Pod happens to be running on that particular node, because the node will forward
 the traffic on if it is not.
 
-The port has to fall in the 30000–32767 range. Pinning it, as done here, keeps the URL
+The port has to fall in the 3000032767 range. Pinning it, as done here, keeps the URL
 predictable; leaving `nodePort` out lets Kubernetes allocate one.
 
 ## Manifest
@@ -40,7 +40,7 @@ minikube service webapp-nodeport --url
 - From the `client` Pod, `webapp-nodeport:9090` returned `HTTP 200` exactly as the ClusterIP
   Service did. Nothing about in-cluster access changed.
 - `minikube ssh` puts the shell on the node itself, and from there
-  `curl http://192.168.49.2:30090` returned `HTTP/1.1 200 OK` — the node port is genuinely
+  `curl http://192.168.49.2:30090` returned `HTTP/1.1 200 OK`  the node port is genuinely
   listening.
 - From macOS, `192.168.49.2` is not routable. With the Docker driver the "node" is a container
   on Docker's own bridge network, which lives inside the Docker VM and has no route from the

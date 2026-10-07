@@ -3,7 +3,7 @@
 This is what you get when you write `kind: Service` and say nothing about the type. Kubernetes
 picks a free address out of the service CIDR, and kube-proxy programs the node so that packets
 sent to that address and port land on one of the Pods matched by the selector. The address is
-not attached to any network interface — it only means something to the forwarding rules inside
+not attached to any network interface  it only means something to the forwarding rules inside
 the cluster, which is exactly why nothing outside can reach it.
 
 That makes it the right choice for everything that only other Pods need to talk to: a backend
@@ -39,18 +39,18 @@ curl -s -m 3 http://$(kubectl get svc webapp-clusterip -o jsonpath='{.spec.clust
 ## What happened
 
 - The Service was given ClusterIP `10.97.242.242`. Its EndpointSlice lists `10.244.0.3` on
-  port 80 — that is the `webapp` Pod, so the label selector matched as intended. Note that the
+  port 80  that is the `webapp` Pod, so the label selector matched as intended. Note that the
   EndpointSlice records the *container* port, not the Service port: `targetPort: http` has
   already been resolved to 80 by this stage.
 - From the `client` Pod, `curl http://webapp-clusterip:9090` returned `HTTP 200`, and curl's
-  own `%{remote_ip}` reports that it connected to `10.97.242.242:9090` — the virtual IP, not
+  own `%{remote_ip}` reports that it connected to `10.97.242.242:9090`  the virtual IP, not
   the Pod IP. The client never learns which Pod served it.
 - The fully qualified name `webapp-clusterip.default.svc.cluster.local` resolves the same way
   and returned the page, `<title>DevOps Lab - Kubernetes Services</title>`. The short name
   works only because both Pods are in the `default` namespace and the search domain fills in
   the rest.
 - Running the same request from the laptop against `10.97.242.242:9090` hung and curl gave up
-  with exit code 28 after the three second timeout. That is not a misconfiguration — it is the
+  with exit code 28 after the three second timeout. That is not a misconfiguration  it is the
   entire point of this Service type.
 
 ![ClusterIP run](screenshots/clusterip-terminal.png)
@@ -58,7 +58,7 @@ curl -s -m 3 http://$(kubectl get svc webapp-clusterip -o jsonpath='{.spec.clust
 ## What a broken selector looks like
 
 The selector is the only thing connecting a Service to its Pods, and a typo in it fails
-quietly — the Service is created successfully and looks healthy at a glance.
+quietly  the Service is created successfully and looks healthy at a glance.
 [`webapp-clusterip-typo.yaml`](webapp-clusterip-typo.yaml) is the same manifest with
 `app: webap`, one letter short.
 
@@ -82,4 +82,4 @@ kubectl exec client -- curl -s -m 5 -o /dev/null -w 'HTTP %{http_code}\n' http:/
   no endpoints behind it.
 
 `kubectl get endpointslices` is therefore the first command to run whenever a Service "exists
-but doesn't work" — it answers "is anything actually behind this?" in one line.
+but doesn't work"  it answers "is anything actually behind this?" in one line.

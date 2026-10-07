@@ -27,12 +27,12 @@ It has its own inode. If the target is removed the link stays behind but points 
 ### Commands used
 
 ```bash
-ln notes.txt notes-hard.txt        # hard link
-ln -s notes.txt notes-soft.txt     # symbolic link
-ls -li                             # -i shows inode numbers
+ln notes.txt notes-hard.txt        #hard link
+ln -s notes.txt notes-soft.txt     #symbolic link
+ls -li                             #-i shows inode numbers
 stat -c "%n inode=%i links=%h" notes.txt notes-hard.txt notes-soft.txt
-rm notes.txt                       # delete the original name
-unlink notes-soft.txt              # remove a link (same as rm)
+rm notes.txt                       #delete the original name
+unlink notes-soft.txt              #remove a link (same as rm)
 ```
 
 ### What the run showed
@@ -96,15 +96,15 @@ ls -la /home/devuser2
 Frequently used forms:
 
 ```bash
-journalctl                      # everything, oldest first (paged)
-journalctl -b                   # only the current boot
-journalctl -n 20                # last 20 lines
-journalctl -f                   # follow, like tail -f
-journalctl -u cron              # a single unit's log
-journalctl -p err               # priority err and worse
+journalctl                      #everything, oldest first (paged)
+journalctl -b                   #only the current boot
+journalctl -n 20                #last 20 lines
+journalctl -f                   #follow, like tail -f
+journalctl -u cron              #a single unit's log
+journalctl -p err               #priority err and worse
 journalctl --since "2 minutes ago"
 journalctl --since today --until "1 hour ago"
-journalctl --no-pager           # plain output, useful in scripts
+journalctl --no-pager           #plain output, useful in scripts
 ```
 
 ### Practice: reading a service's log

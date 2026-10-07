@@ -42,7 +42,7 @@ minikube service webapp-loadbalancer --url
   ClusterIP Service, with one more thing bolted on top that happens to be unavailable here.
 - `minikube service --url` tunnels to the node port the same way it did for NodePort, and the
   page loaded in the browser. (`minikube tunnel`, run in a second terminal, would go further
-  and assign a real `EXTERNAL-IP` by emulating the cloud side — it needs `sudo` and was not
+  and assign a real `EXTERNAL-IP` by emulating the cloud side  it needs `sudo` and was not
   necessary to show the point.)
 
 ![LoadBalancer run](screenshots/loadbalancer-terminal.png)

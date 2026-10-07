@@ -3,7 +3,7 @@
 An ExternalName Service is the odd one out: no selector, no ClusterIP, no EndpointSlice, no
 Pods involved anywhere. All it does is tell cluster DNS to answer
 `webapp-externalname.default.svc.cluster.local` with a CNAME record pointing at whatever
-`externalName` is set to. There is no proxying and no traffic path — CoreDNS is the only
+`externalName` is set to. There is no proxying and no traffic path  CoreDNS is the only
 component that ever knows the Service exists.
 
 What it buys you is indirection. A managed database, a payment API, an S3 endpoint can be
@@ -13,7 +13,7 @@ Service instead of redeploying every application that had the hostname baked int
 ## Manifest
 
 [`webapp-externalname.yaml`](webapp-externalname.yaml): `type: ExternalName` and
-`externalName: example.org`. There is nothing else to write — a `ports` block would be ignored.
+`externalName: example.org`. There is nothing else to write  a `ports` block would be ignored.
 
 ![webapp-externalname.yaml](screenshots/webapp-externalname-yaml.png)
 
@@ -30,7 +30,7 @@ kubectl exec client -- curl -s -o /dev/null -w "HTTP %{http_code}\n" -H "Host: e
 ## What happened
 
 - `TYPE` is `ExternalName`, `CLUSTER-IP` is `<none>`, `EXTERNAL-IP` holds `example.org` and
-  `SELECTOR` is `<none>`. Asking for its EndpointSlices returns `No resources found` — there
+  `SELECTOR` is `<none>`. Asking for its EndpointSlices returns `No resources found`  there
   is nothing to enumerate, because no Pod is being tracked.
 - `nslookup` returned `canonical name = example.org` and then example.org's real A records
   (`172.66.157.237` and `104.20.26.136`). CoreDNS supplied the CNAME and the upstream resolver

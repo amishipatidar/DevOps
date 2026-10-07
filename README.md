@@ -4,7 +4,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## 👤 Student Information
+## Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## 📁 Repository Overview
+## Repository Overview
 
 | # | Topic Folder | Description & Key Focus |
 |---|---|---|
@@ -39,7 +39,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## 🚀 Environment & Tooling Setup
+## Environment & Tooling Setup
 
 - **Operating System:** macOS / Ubuntu Linux
 - **Container Runtime:** Docker Desktop / Docker Engine
@@ -48,7 +48,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## 📸 Screenshots & Documentation Guide
+## Screenshots & Documentation Guide
 
 Each module folder contains a `screenshots/` directory. To complete your submission:
 
@@ -59,7 +59,7 @@ Each module folder contains a `screenshots/` directory. To complete your submiss
 
 ---
 
-## 📤 How to Push This Repository to GitHub
+## How to Push This Repository to GitHub
 
 ```bash
 # 1. Stage all changes

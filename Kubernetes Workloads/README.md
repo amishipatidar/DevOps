@@ -6,7 +6,7 @@ that each one shows what the previous one could not do. Manifests are in
 
 | Object | What it adds over the one above |
 |---|---|
-| **Pod** | The smallest unit — one or more containers sharing an IP and volumes. Nothing restarts it if it dies |
+| **Pod** | The smallest unit  one or more containers sharing an IP and volumes. Nothing restarts it if it dies |
 | **ReplicaSet** | Keeps N matching Pods alive at all times: self-healing and scaling |
 | **Deployment** | Manages ReplicaSets, which buys rolling updates, revision history and rollback |
 | **DaemonSet** | One Pod per node, regardless of how many nodes there are |
@@ -27,9 +27,9 @@ kubectl get pods
 
 The last command is the whole lesson: after deleting the Pod, `No resources found`. Nobody
 brought it back, because nothing was watching it. This is why Pods are essentially never
-created directly outside of debugging — something has to own them.
+created directly outside of debugging  something has to own them.
 
-## 2. ReplicaSet — self-healing and scaling
+## 2. ReplicaSet  self-healing and scaling
 
 [`manifests/backend-rs.yaml`](manifests/backend-rs.yaml) asks for `replicas: 3` matching
 `app=campus-backend`.
@@ -39,7 +39,7 @@ kubectl apply -f backend-rs.yaml
 kubectl wait --for=condition=Ready pod -l app=campus-backend --timeout=240s
 kubectl get rs,pods -l app=campus-backend
 
-kubectl delete pod campus-backend-rs-jqbmr --wait=false   # kill one on purpose
+kubectl delete pod campus-backend-rs-jqbmr --wait=false   #kill one on purpose
 kubectl get pods -l app=campus-backend
 
 kubectl scale rs campus-backend-rs --replicas=5
@@ -55,15 +55,15 @@ What the output shows:
   is still `Terminating`**. The controller does not wait for the deletion to finish; it
   reacts as soon as the observed count drops below 3.
 - The ReplicaSet finds its Pods purely through the **label selector**. It has no list of Pod
-  names — names carry a random suffix precisely because they are disposable.
+  names  names carry a random suffix precisely because they are disposable.
 - `kubectl scale --replicas=5` added two more, and the `Events` list records a
   `SuccessfulCreate` for every single Pod it has ever made.
 - What a ReplicaSet *cannot* do is change the image in a controlled way. Editing the template
   does not touch the Pods that already exist. That gap is exactly what a Deployment fills.
 
-## 3. Deployment — rolling update, history, rollback
+## 3. Deployment  rolling update, history, rollback
 
-[`deployment-v1.yaml`](manifests/deployment-v1.yaml) →
+[`deployment-v1.yaml`](manifests/deployment-v1.yaml) 
 [`deployment-v2.yaml`](manifests/deployment-v2.yaml). The two files differ only in the version
 label and the line the container prints.
 
@@ -94,14 +94,14 @@ kubectl rollout undo deployment/campus-backend
 
 - Applying v2 did not modify the existing ReplicaSet. It created a **new** one
   (`5f9c746b6b`) and scaled it up while scaling `8c597f764` down to zero, one replica at a
-  time — `rollout status` narrates each step.
+  time  `rollout status` narrates each step.
 - With `maxSurge: 1` and `maxUnavailable: 0`, a new Pod has to become Ready before an old one
   is allowed to go. That is what makes the update zero-downtime, and it matters again in
   section 4.
 - `-L version` prints the `version` label as a column, so the changeover is visible directly:
   three Pods `Terminating` at `1.0.0` next to three `Running` at `2.0.0`.
 - The old ReplicaSet is **kept at 0 replicas** rather than deleted. That is what makes
-  rollback instant — `kubectl rollout undo` just scaled `8c597f764` back up to 3, with no
+  rollback instant  `kubectl rollout undo` just scaled `8c597f764` back up to 3, with no
   image pull needed.
 - After the undo, `rollout history` shows revisions 2 and 3, not 1 and 2. A rollback is
   recorded as a *new* revision rather than erasing one. The `CHANGE-CAUSE` column is populated
@@ -124,15 +124,15 @@ kubectl rollout undo deployment/campus-backend
   `pull access denied, repository does not exist`.
 - The important part is the three Pods underneath it, all still `Running` on the old version.
   Because the new Pod never became Ready and `maxUnavailable` is 0, Kubernetes refused to
-  remove any of them. **A broken deploy did not take the application down** — the rollout
+  remove any of them. **A broken deploy did not take the application down**  the rollout
   simply stalled.
 - `kubectl rollout undo` cleared it. Note the warning it prints: rolling back does not update
   the `last-applied-configuration` annotation, so the next `kubectl apply` of an old file can
   behave unexpectedly. Re-applying the known-good manifest is the tidier fix in a real
   workflow.
 
-Debugging order that works almost every time: `kubectl get pods` → `kubectl describe pod`
-(read the Events) → `kubectl logs`, adding `--previous` when the container is crash-looping.
+Debugging order that works almost every time: `kubectl get pods`  `kubectl describe pod`
+(read the Events)  `kubectl logs`, adding `--previous` when the container is crash-looping.
 
 ## 5. DaemonSet
 
@@ -148,7 +148,7 @@ kubectl describe node minikube | grep Taints
 
 ![DaemonSet with one Pod per node](screenshots/daemonset.png)
 
-There is no `replicas` field anywhere in that manifest — the replica count *is* the node
+There is no `replicas` field anywhere in that manifest  the replica count *is* the node
 count. `DESIRED` is 1 here simply because this Minikube cluster has one node; adding a second
 node would create a second Pod with no change to the manifest.
 
@@ -158,7 +158,7 @@ contrasting with a multi-node cluster: there the control-plane node normally car
 toleration lands only on the workers and `DESIRED` comes out lower than the node count.
 Minikube's single node is untainted so that ordinary workloads can run on it at all.
 
-DaemonSets are how log collectors, monitoring agents and CNI plugins are deployed —
+DaemonSets are how log collectors, monitoring agents and CNI plugins are deployed 
 `kube-proxy` and `kindnet` in this very cluster are DaemonSets themselves.
 
 ## Pod status cheat sheet
@@ -170,7 +170,7 @@ DaemonSets are how log collectors, monitoring agents and CNI plugins are deploye
 | `ImagePullBackOff` / `ErrImagePull` | Bad image name or tag, or no registry access | Spelling, tag, pull secret |
 | `CrashLoopBackOff` | Container starts and exits repeatedly | `kubectl logs --previous` |
 | `Running` but `0/1 READY` | Readiness probe failing | Probe path and port, app logs |
-| `Completed` | Exited 0 — normal for Jobs, not for a Deployment | Whether it should be long-running |
+| `Completed` | Exited 0  normal for Jobs, not for a Deployment | Whether it should be long-running |
 | `Terminating` | Shutting down (30s grace period by default) | Stuck? Check finalizers |
 
 ## Cleanup
@@ -182,4 +182,4 @@ kubectl delete deployment campus-backend
 
 ---
 
-**Amishi Patidar** · Roll No. 24BCS10184
+**Amishi Patidar**  Roll No. 24BCS10184
