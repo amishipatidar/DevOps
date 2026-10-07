@@ -13,7 +13,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## 📁 Repository Overview
+## Repository Overview
 
 | # | Folder | Topic & Description |
 |---|---|---|
