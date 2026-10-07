@@ -6,8 +6,8 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ## 👤 Student Information
 
-- **Student Name:** `[Your Name]`
-- **Roll Number:** `[Your Roll Number]`
+- **Student Name:** Amishi Patidar
+- **Roll Number:** 24BCS10184
 - **Course:** DevOps Engineering
 - **Environment:** macOS / Linux (Docker Desktop, Minikube, Bash/Zsh)
 
@@ -75,4 +75,4 @@ git push -u origin main
 
 ---
 
-*Maintained and submitted for DevOps Module Coursework.*
+*Submitted by **Amishi Patidar** (Roll No. 24BCS10184) for DevOps Module Coursework.*

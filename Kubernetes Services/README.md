@@ -87,4 +87,4 @@ kubectl delete -f webapp-pod.yaml
 
 ---
 
-**Parv Mehta** · Roll No. 24BCS10301
+**Amishi Patidar** · Roll No. 24BCS10184
