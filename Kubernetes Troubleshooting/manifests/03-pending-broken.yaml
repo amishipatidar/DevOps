@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pending-pod-broken
+spec:
+  containers:
+  - name: huge-app
+    image: nginx:alpine
+    resources:
+      requests:
+        cpu: "100"
+        memory: "500Gi"

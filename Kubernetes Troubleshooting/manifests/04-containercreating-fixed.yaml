@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: non-existent-secret-key
+type: Opaque
+stringData:
+  api-key: "secret-token-12345"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: containercreating-pod-fixed
+spec:
+  containers:
+  - name: app
+    image: nginx:alpine
+    volumeMounts:
+    - name: missing-secret-vol
+      mountPath: /etc/secret
+  volumes:
+  - name: missing-secret-vol
+    secret:
+      secretName: non-existent-secret-key

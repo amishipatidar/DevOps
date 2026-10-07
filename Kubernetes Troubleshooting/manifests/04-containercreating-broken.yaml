@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: containercreating-pod-broken
+spec:
+  containers:
+  - name: app
+    image: nginx:alpine
+    volumeMounts:
+    - name: missing-secret-vol
+      mountPath: /etc/secret
+  volumes:
+  - name: missing-secret-vol
+    secret:
+      secretName: non-existent-secret-key

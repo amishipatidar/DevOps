@@ -4,7 +4,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## Student Information
+## 👤 Student Information
 
 - **Student Name:** Amishi Patidar
 - **Roll Number:** 24BCS10184
@@ -13,7 +13,7 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## Repository Overview
+## 📁 Repository Overview
 
 | # | Folder | Topic & Description |
 |---|---|---|
@@ -28,10 +28,11 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 | 09 | [`Kubernetes Workloads/`](./Kubernetes%20Workloads/) | Pods, ReplicaSets, Deployments (with rolling updates and rollback strategies), and DaemonSets. |
 | 10 | [`Kubernetes Services/`](./Kubernetes%20Services/) | Minikube Service types: ClusterIP, NodePort, LoadBalancer, Headless, and ExternalName. |
 | 11 | [`Kubernetes Ingress and Config/`](./Kubernetes%20Ingress%20and%20Config/) | Managing application state with ConfigMaps and Secrets, and host/path-based routing using NGINX Ingress Controller. |
+| 12 | [`Kubernetes Troubleshooting/`](./Kubernetes%20Troubleshooting/) | Session 14 Lab: Troubleshooting CLI (`kubectl describe`, `logs`, `exec`, `top`), 8 common failure modes, and 2-tier Mini Project. |
 
 ---
 
-## Environment & Tooling Setup
+## 🚀 Environment & Tooling Setup
 
 - **Operating System:** macOS / Ubuntu Linux
 - **Container Runtime:** Docker Desktop / Docker Engine
@@ -40,14 +41,31 @@ Hands-on notes, scripts, configurations, and code for the complete DevOps module
 
 ---
 
-## Screenshots & Documentation Guide
+## 📸 Screenshots & Documentation Guide
 
 Each module folder contains a `screenshots/` directory. To complete your submission:
 
 1. **Execute the commands** listed in each module's `README.md`.
 2. **Take terminal/browser screenshots** showing your command executions and outputs.
-3. **Save your screenshots** into the respective `screenshots/` folder (e.g., `Linux Fundamentals/screenshots/journalctl.png`).
+3. **Save your screenshots** into the respective `screenshots/` folder (e.g., `Kubernetes Troubleshooting/screenshots/task3-mini-project-fixed.png`).
 4. **Reference them in markdown** using relative links: `![Screenshot Name](./screenshots/filename.png)`.
+
+---
+
+## 📤 How to Push This Repository to GitHub
+
+Follow these quick commands to create and push your assignment repo to GitHub:
+
+```bash
+# 1. Stage all new files and updates
+git add .
+
+# 2. Commit changes
+git commit -m "Add Session 14: Kubernetes Troubleshooting lab and mini-project"
+
+# 3. Push to main branch
+git push origin main
+```
 
 ---
 

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-test-broken
+spec:
+  containers:
+  - name: client
+    image: busybox:1.36
+    command: ["sh", "-c", "nslookup non-existent-service-dns-name.default.svc.cluster.local || echo 'DNS lookup failed'"]
