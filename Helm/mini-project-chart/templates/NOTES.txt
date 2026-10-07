@@ -1,0 +1,5 @@
+Enterprise Web Application Helm Release {{ .Release.Name }} deployed!
+
+- NodePort: {{ .Values.service.nodePort }}
+- Ingress Host: {{ .Values.ingress.host }}
+- HPA Target: {{ .Values.hpa.minReplicas }} - {{ .Values.hpa.maxReplicas }} replicas

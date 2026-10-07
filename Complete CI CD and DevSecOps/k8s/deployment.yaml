@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-api
+  template:
+    metadata:
+      labels:
+        app: devsecops-api
+    spec:
+      containers:
+      - name: api
+        image: amishipatidar/devsecops-secure-app:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devsecops-api-service
+spec:
+  type: ClusterIP
+  selector:
+    app: devsecops-api
+  ports:
+  - port: 80
+    targetPort: 8080

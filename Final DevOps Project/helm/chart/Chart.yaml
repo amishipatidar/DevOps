@@ -1,0 +1,5 @@
+apiVersion: v2
+name: final-capstone-chart
+description: Complete Helm Chart for DevOps Capstone Project
+version: 1.0.0
+appVersion: "1.0.0"

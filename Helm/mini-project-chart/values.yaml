@@ -1,0 +1,31 @@
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: "1.25-alpine"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30090
+
+ingress:
+  enabled: true
+  className: nginx
+  host: helm-demo.local
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 75
+
+config:
+  databaseHost: "postgres.prod.svc.cluster.local"
+  databasePort: "5432"
+  enableCaching: "true"
+
+secret:
+  dbUser: "admin"
+  dbPassword: "SuperSecretPassword123!"

@@ -1,0 +1,10 @@
+# Fixed Resolution Scenario
+apiVersion: v1
+kind: Pod
+metadata:
+  name: capstone-fixed-pod
+spec:
+  containers:
+  - name: app
+    image: node:20-alpine
+    command: ["sh", "-c", "echo Capstone Pod Working && sleep 3600"]

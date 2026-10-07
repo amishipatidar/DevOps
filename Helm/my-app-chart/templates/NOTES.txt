@@ -1,0 +1,7 @@
+Thank you for installing {{ .Chart.Name }} release {{ .Release.Name }}!
+
+1. Get application status:
+   kubectl get pods -l app={{ include "my-app-chart.fullname" . }}
+
+2. Access application:
+   kubectl port-forward svc/{{ include "my-app-chart.fullname" . }} 8080:80

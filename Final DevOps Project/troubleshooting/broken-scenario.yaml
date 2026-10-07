@@ -1,0 +1,9 @@
+# Intentionally Broken Scenario for Final Troubleshooting Challenge
+apiVersion: v1
+kind: Pod
+metadata:
+  name: capstone-broken-pod
+spec:
+  containers:
+  - name: app
+    image: amishipatidar/final-devops-capstone-app:invalid-tag-999

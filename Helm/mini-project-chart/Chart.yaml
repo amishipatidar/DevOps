@@ -1,0 +1,6 @@
+apiVersion: v2
+name: enterprise-web-chart
+description: Complete Production-Grade Helm Chart for Microservice Deployment
+type: application
+version: 1.0.0
+appVersion: "2.4.0"

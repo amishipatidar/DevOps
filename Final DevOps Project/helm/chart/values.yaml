@@ -1,0 +1,7 @@
+replicaCount: 3
+image:
+  repository: amishipatidar/final-devops-capstone-app
+  tag: latest
+service:
+  type: ClusterIP
+  port: 80

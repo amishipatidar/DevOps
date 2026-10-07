@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-managed-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gitops-managed-app
+  template:
+    metadata:
+      labels:
+        app: gitops-managed-app
+    spec:
+      containers:
+        - name: web
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

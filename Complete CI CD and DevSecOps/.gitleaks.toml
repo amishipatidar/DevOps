@@ -1,0 +1,3 @@
+[allowlist]
+description = "Allowed mock test credentials"
+regexes = ['''EXAMPLE_MOCK_TOKEN''']

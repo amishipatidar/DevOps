@@ -1,0 +1,22 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: "alpine"
+
+service:
+  type: ClusterIP
+  port: 80
+
+environment:
+  name: "staging"
+  appName: "Helm Demo Web App"
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
